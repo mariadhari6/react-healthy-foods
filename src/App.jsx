@@ -1,13 +1,18 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import About from "./pages/About";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div>
-        <h1>{process.env.REACT_APP_ID_RECIPE}</h1>
-        <h1>{process.env.REACT_APP_KEY_RECIPE}</h1>
-        <h1>{process.env.REACT_APP_ID_FOOD}</h1>
-        <h1>{process.env.REACT_APP_KEY_FOOD}</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
