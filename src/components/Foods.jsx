@@ -12,6 +12,7 @@ const Foods = () => {
           foodContentsLabel={item?.foodContentsLabel}
           label={item?.label}
           key={index}
+          image={item?.image}
         />
       ))}
     </div>
