@@ -1,11 +1,7 @@
-const Food = ({ label, category, foodContentsLabel }) => {
+const Food = ({ label, category, foodContentsLabel, image }) => {
   return (
     <div className="bg-white border-gray-200 border-solid border-2 rounded-sm">
-      <img
-        className="h-48 w-75 object-fill"
-        src="https://www.edamam.com/food-img/349/349f852497885b9d9c0b195ad0d0db8f.jpg"
-        alt="Persian Chicken"
-      />
+      <img className="h-48 w-75 object-none" src={image} alt={label} />
       <div className="flex flex-col">
         <h1 className="text-lg font-bold text-center capitalize my-2">
           {label}
