@@ -2,6 +2,7 @@ import Food from "./cards/Food";
 import HomeContext from "../contexts/HomeContext";
 import React, { useContext, useState } from "react";
 import { fetchNextFood } from "../controllers/HomeController";
+import Loading from "./reuseable/Loading";
 const { FoodsContext } = HomeContext;
 const Foods = ({ nextFoods, setNextFoods }) => {
   const { foods, addFood } = useContext(FoodsContext);
@@ -21,33 +22,26 @@ const Foods = ({ nextFoods, setNextFoods }) => {
       </div>
       {foods.length === 0 && (
         <div className="flex justify-center items-center h-96">
-          <div className="lds-spinner">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+          <Loading />
+        </div>
+      )}
+      {foods.length > 0 &&
+        (loading ? (
+          <div className="flex justify-center items-center">
+            <Loading />
           </div>
-        </div>
-      )}
-      {foods.length > 0 && !loading && (
-        <div className="flex justify-center items-center">
-          <button
-            className="text-center bg-orange-600 text-white px-4 rounded-md py-1 mx-auto my-4 shadow-lg hover:shadow-orange-500/50"
-            onClick={() =>
-              fetchNextFood(nextFoods, addFood, setLoading, setNextFoods)
-            }
-          >
-            Load More
-          </button>
-        </div>
-      )}
+        ) : (
+          <div className="flex justify-center items-center">
+            <button
+              className="text-center bg-orange-600 text-white px-4 rounded-md py-1 mx-auto my-4 shadow-lg hover:shadow-orange-500/50"
+              onClick={() =>
+                fetchNextFood(nextFoods, addFood, setLoading, setNextFoods)
+              }
+            >
+              Load More
+            </button>
+          </div>
+        ))}
     </React.Fragment>
   );
 };
