@@ -4,14 +4,14 @@ import logo from "../assets/logo.png";
 import HomeContext from "../contexts/HomeContext";
 import { fetchFood } from "../controllers/HomeController";
 const { FoodsContext } = HomeContext;
-const AppBar = () => {
+const AppBar = ({ setNextFoods }) => {
   const { setFoods, addFood } = useContext(FoodsContext);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     setFoods([]);
-    fetchFood(query, addFood);
+    fetchFood(query, addFood, null, setNextFoods);
     setQuery("");
   };
   return (
