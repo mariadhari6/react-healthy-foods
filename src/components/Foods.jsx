@@ -8,8 +8,7 @@ const Foods = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 grid gap-7 my-7 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
       {foods?.map((item, index) => (
         <Food
-          category={item?.category}
-          foodContentsLabel={item?.foodContentsLabel}
+          healthLabels={item?.healthLabels}
           label={item?.label}
           key={index}
           image={item?.image}
