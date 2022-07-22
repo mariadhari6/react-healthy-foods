@@ -30,7 +30,7 @@ const fetchFood = (ingredient, addFood, setLoading, setNextFoods) => {
           setLoading(false);
         }
         if (setNextFoods) {
-          setNextFoods(data._links?.next?.href);
+          setNextFoods(data._links.next.href);
         }
       }
     })
@@ -56,7 +56,7 @@ const fetchNextFood = (url, addFood, setLoading, setNextFoods) => {
           setLoading(false);
         }
         if (setNextFoods) {
-          setNextFoods(data._links?.next?.href);
+          setNextFoods(data._links.next.href);
         }
       }
     })

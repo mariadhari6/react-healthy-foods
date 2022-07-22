@@ -26,6 +26,7 @@ const Foods = ({ nextFoods, setNextFoods }) => {
         </div>
       )}
       {foods.length > 0 &&
+        nextFoods &&
         (loading ? (
           <div className="flex justify-center items-center">
             <Loading />
