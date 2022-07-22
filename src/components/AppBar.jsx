@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import HomeContext from "../contexts/HomeContext";
+import { fetchFood } from "../controllers/HomeController";
+const { FoodsContext } = HomeContext;
 const AppBar = () => {
+  const { setFoods, addFood } = useContext(FoodsContext);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFoods([]);
+    fetchFood(query, addFood);
+    setQuery("");
+  };
   return (
     <div className="relative bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -32,14 +42,20 @@ const AppBar = () => {
             </Link>
           </nav>
           <div className="relative shadow-sm">
-            <input
-              type="text"
-              placeholder="Search foods recipe ..."
-              className="outline-none block w-full sm:text-sm"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <button className="absolute inset-y-0 right-0 flex items-center">
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Search foods recipe ..."
+                className="outline-none block w-full sm:text-sm"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                autoFocus
+              />
+            </form>
+            <button
+              className="absolute inset-y-0 right-0 flex items-center"
+              onClick={handleSubmit}
+            >
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
