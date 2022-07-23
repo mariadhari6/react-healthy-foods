@@ -6,6 +6,11 @@ const labels = [
   "Total Fat",
   "Iron",
   "Protein",
+  "Vit B",
+  "Vit C",
+  "Vit D",
+  "Vit E",
+  "Vit A",
 ];
 const dataLabels = {
   enabled: true,
@@ -47,63 +52,15 @@ const dataLabels = {
   },
 };
 const legend = {
-  show: true,
-  showForSingleSeries: false,
-  showForNullSeries: true,
-  showForZeroSeries: true,
-  position: "bottom",
-  horizontalAlign: "center",
-  floating: false,
-  fontFamily: "Helvetica, Arial",
-  fontWeight: 400,
-  formatter: function (seriesName, opts) {
-    let totals = 0;
-    opts.w.globals.series.forEach((serie) => {
-      totals += serie;
-    });
-    return [
-      `<h1 style="font-size: 1.2rem; font-weight: bold;">${(
-        (opts.w.globals.series[opts.seriesIndex] * 100) /
-        totals
-      ).toFixed(1)} %</h1>`,
-      seriesName,
-    ];
-  },
-  inverseOrder: false,
-  width: undefined,
-  height: undefined,
-  tooltipHoverFormatter: undefined,
-  customLegendItems: [],
-  offsetX: 0,
-  offsetY: 0,
-  labels: {
-    colors: undefined,
-    useSeriesColors: false,
-  },
-  markers: {
-    width: 12,
-    height: 12,
-    strokeWidth: 0,
-    strokeColor: "#fff",
-    fillColors: undefined,
-    radius: 12,
-    customHTML: undefined,
-    onClick: undefined,
-    offsetX: -5,
-    offsetY: -8,
-  },
-  itemMargin: {
-    horizontal: 15,
-    vertical: 10,
-  },
+  fontSize: "14px",
 };
 const options = {
   labels,
   dataLabels,
   legend,
 };
-const series = [100, 200, 201, 50, 70, 45];
+const series = [100, 200, 201, 50, 70, 45, 10, 20, 30, 40, 50];
 const NutrientsChart = () => {
-  return <Chart options={options} series={series} type="donut" />;
+  return <Chart options={options} series={series} type="donut" width="100%" />;
 };
 export default NutrientsChart;
