@@ -6,6 +6,9 @@ module.exports = {
       width: {
         75: "300px",
       },
+      height: {
+        banner: "491.3px",
+      },
     },
   },
   plugins: [],
