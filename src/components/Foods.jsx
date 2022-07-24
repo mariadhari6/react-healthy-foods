@@ -28,13 +28,13 @@ const Foods = ({ nextFoods, setNextFoods }) => {
       {foods.length > 0 &&
         nextFoods &&
         (loading ? (
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mb-32">
             <Loading />
           </div>
         ) : (
           <div className="flex justify-center items-center">
             <button
-              className="text-center bg-orange-600 text-white px-4 rounded-md py-1 mx-auto my-4 shadow-lg hover:shadow-orange-500/50"
+              className="text-center mb-32 bg-orange-600 text-white px-4 rounded-md py-1 mx-auto my-4 shadow-lg hover:shadow-orange-500/50"
               onClick={() =>
                 fetchNextFood(nextFoods, addFood, setLoading, setNextFoods)
               }

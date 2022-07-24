@@ -3,6 +3,7 @@ import AppBar from "../components/AppBar";
 import { fetchFood, getRandomIngredient } from "../controllers/HomeController";
 import HomeContext from "../contexts/HomeContext";
 import Foods from "../components/Foods";
+import Footer from "../components/Footer";
 const { FoodsContext } = HomeContext;
 const Home = () => {
   const { addFood, setFoods } = useContext(FoodsContext);
@@ -17,8 +18,11 @@ const Home = () => {
   }, [nextFoods]);
   return (
     <React.Fragment>
-      <AppBar setNextFoods={setNextFoods} />
-      <Foods nextFoods={nextFoods} setNextFoods={setNextFoods} />
+      <div className="relative min-h-screen">
+        <AppBar setNextFoods={setNextFoods} />
+        <Foods nextFoods={nextFoods} setNextFoods={setNextFoods} />
+        <Footer />
+      </div>
     </React.Fragment>
   );
 };
