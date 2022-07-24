@@ -14,7 +14,7 @@ const Ingredients = () => {
           </div>
         </div>
         <button className="outline-none">
-          <span class="material-symbols-outlined border-2 rounded-full p-1 font-bold text-orange-600 border-orange-600 hover:bg-orange-600 hover:text-white">
+          <span className="material-symbols-outlined border-2 rounded-full p-1 font-bold text-orange-600 border-orange-600 hover:bg-orange-600 hover:text-white">
             add
           </span>
         </button>
