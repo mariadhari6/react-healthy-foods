@@ -56,7 +56,7 @@ const AppBar = ({ setNextFoods }) => {
               className="absolute inset-y-0 right-0 flex items-center"
               onClick={handleSubmit}
             >
-              <i className="fa-solid fa-magnifying-glass"></i>
+              <span className="material-symbols-outlined">search</span>
             </button>
           </div>
           <div className="-mr-2 -my-2 md:hidden">
@@ -125,7 +125,9 @@ const AppBar = ({ setNextFoods }) => {
                     to="/"
                     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                   >
-                    <i className="fa-solid fa-house h-6 w-6 text-orange-600 pt-1"></i>
+                    <span className="material-symbols-outlined text-orange-600">
+                      house
+                    </span>
                     <span className="ml-3 text-base font-medium text-gray-900">
                       Home
                     </span>
@@ -134,7 +136,9 @@ const AppBar = ({ setNextFoods }) => {
                     to="/about"
                     className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
                   >
-                    <i className="fa-solid fa-circle-info h-6 w-6 text-orange-600 pt-1"></i>
+                    <span className="material-symbols-outlined text-orange-600">
+                      info
+                    </span>
                     <span className="ml-3 text-base font-medium text-gray-900">
                       About
                     </span>
