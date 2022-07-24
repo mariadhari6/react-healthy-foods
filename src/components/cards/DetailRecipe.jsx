@@ -14,7 +14,7 @@ const DetailRecipe = () => {
           </div>
         </div>
         <button className="hover:shadow-lg hover:shadow-orange-600/50 outline-none uppercase text-xs flex items-center gap-2 py-1 px-2 hover:text-white hover:bg-orange-600  rounded-md border-2 border-orange-600 text-orange-600 font-medium">
-          <span class="material-symbols-outlined">cloud_download</span>
+          <span className="material-symbols-outlined">cloud_download</span>
           Download recipe pdf
         </button>
       </div>
@@ -24,7 +24,7 @@ const DetailRecipe = () => {
           <div></div>
           <div className="flex flex-col gap-4">
             <div className="flex gap-2">
-              <span class="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
+              <span className="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
                 check
               </span>
               <div className="flex gap-2">
@@ -48,7 +48,7 @@ const DetailRecipe = () => {
               </div>
             </div>
             <div className="flex gap-2">
-              <span class="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
+              <span className="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
                 check
               </span>
               <div className="flex gap-2">
@@ -72,7 +72,7 @@ const DetailRecipe = () => {
               </div>
             </div>
             <div className="flex gap-2">
-              <span class="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
+              <span className="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
                 check
               </span>
               <div className="flex gap-2">
