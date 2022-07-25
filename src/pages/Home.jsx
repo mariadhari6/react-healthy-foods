@@ -13,9 +13,6 @@ const Home = () => {
     fetchFood(getRandomIngredient(), addFood, false, setNextFoods);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(() => {
-    console.log(nextFoods);
-  }, [nextFoods]);
   return (
     <React.Fragment>
       <div className="relative min-h-screen">
