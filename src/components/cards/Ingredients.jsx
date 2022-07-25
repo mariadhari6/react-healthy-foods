@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import FoodContext from "../../contexts/FoodContext";
+const { RecipeContext } = FoodContext;
 const Ingredients = () => {
+  const { recipe } = useContext(RecipeContext);
+  const { ingredients } = recipe;
   return (
     <div className="bg-white shadow-sm drop-shadow-sm rounded-md">
       <div className="flex justify-between p-3 px-4">
@@ -22,38 +27,20 @@ const Ingredients = () => {
       <hr />
       <div className="px-4 py-6">
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-          <div className="col-span-2 flex items-center gap-2">
-            <div className="bg-orange-600 text-white rounded-full h-8 w-8 flex justify-center items-center font-medium">
-              1
+          {ingredients?.map((item, index) => (
+            <div className="col-span-2 items-center flex gap-2" key={index}>
+              <div>
+                <div className="bg-orange-600 text-white rounded-full h-8 w-8 text-sm flex justify-center items-center font-medium">
+                  {item?.quantity % parseInt(item?.quantity) === 0
+                    ? parseInt(item?.quantity)
+                    : item?.quantity}
+                </div>
+              </div>
+              <h3 className="uppercase text-sm font-medium flex flex-wrap">
+                {item?.text}
+              </h3>
             </div>
-            <h3 className="uppercase text-sm font-medium flex flex-wrap">
-              250gr of fresh salmon
-            </h3>
-          </div>
-          <div className="col-span-2 flex items-center gap-2">
-            <div className="bg-orange-600 text-white rounded-full h-8 w-8 flex justify-center items-center font-medium">
-              3
-            </div>
-            <h3 className="uppercase text-sm font-medium flex flex-wrap">
-              cup fresh orange juice
-            </h3>
-          </div>
-          <div className="col-span-2 flex items-center gap-2">
-            <div className="bg-orange-600 text-white rounded-full h-8 w-8 flex justify-center items-center font-medium">
-              1
-            </div>
-            <h3 className="uppercase text-sm font-medium flex flex-wrap">
-              250gr of fresh salmon
-            </h3>
-          </div>
-          <div className="col-span-2 flex items-center gap-2">
-            <div className="bg-orange-600 text-white rounded-full h-8 w-8 flex justify-center items-center font-medium">
-              3
-            </div>
-            <h3 className="uppercase text-sm font-medium flex flex-wrap">
-              cup fresh orange juice
-            </h3>
-          </div>
+          ))}
         </div>
       </div>
     </div>

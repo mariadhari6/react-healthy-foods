@@ -7,10 +7,10 @@ module.exports = {
         75: "300px",
       },
       height: {
-        banner: "420px",
+        banner: "421px",
       },
       maxHeight: {
-        banner: "420px",
+        banner: "421px",
       },
       padding: {
         badge: "2px",

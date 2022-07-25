@@ -1,27 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./pages/About";
-import Home from "./pages/Home";
-import HomeContext from "./contexts/HomeContext";
-import Recipe from "./pages/Recipe";
-const { FoodsProvider } = HomeContext;
+import RecipeProvider from "./providers/RecipeProvider";
+import FoodsProvider from "./providers/FoodsProvider";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/">
-          <Route
-            index
-            element={
-              <FoodsProvider>
-                <Home />
-              </FoodsProvider>
-            }
-          />
+          <Route index element={<FoodsProvider />} />
           <Route path="about" element={<About />} />
           <Route path="foods">
-            <Route path="recipe/:foodId" element={<Recipe />} />
+            <Route path="recipe/:foodId" element={<RecipeProvider />} />
           </Route>
         </Route>
       </Routes>

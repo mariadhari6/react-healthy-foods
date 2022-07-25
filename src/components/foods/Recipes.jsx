@@ -13,7 +13,7 @@ const Recipes = () => {
       <div className="md:col-span-5 col-span-1">
         <div className="rounded-md drop-shadow-md shadow-sm bg-white">
           <div className="flex justify-between p-3">
-            <h1>Total Nutrients</h1>
+            <h1 className="font-bold uppercase">Total Nutrients</h1>
             <button className="outline-none">. . .</button>
           </div>
           <hr />
