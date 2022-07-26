@@ -22,13 +22,17 @@ const FoodImage = () => {
               </span>{" "}
               {recipe?.mealType[0]}
             </p>
-            <p className="text-orange-300">|</p>
-            <p className="flex items-center gap-1">
-              <span className="material-symbols-outlined text-lg">
-                schedule
-              </span>{" "}
-              {recipe?.totalTime} min
-            </p>
+            {recipe?.totalTime > 0 && (
+              <React.Fragment>
+                <p className="text-orange-300">|</p>
+                <p className="flex items-center gap-1">
+                  <span className="material-symbols-outlined text-lg">
+                    schedule
+                  </span>{" "}
+                  {recipe?.totalTime} min
+                </p>
+              </React.Fragment>
+            )}
           </div>
         </div>
       </div>
