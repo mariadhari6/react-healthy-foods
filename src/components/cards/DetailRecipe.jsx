@@ -1,4 +1,24 @@
+import { useContext, useEffect, useState } from "react";
+import FoodContext from "../../contexts/FoodContext";
+import { fetchNutrients } from "../../controllers/RecipeController";
+const { RecipeContext } = FoodContext;
 const DetailRecipe = () => {
+  const { recipe } = useContext(RecipeContext);
+  const [loading, setLoading] = useState(true);
+  const [ingredients, setIngredients] = useState(recipe.ingredients);
+
+  useEffect(() => {
+    ingredients?.forEach((itemRecipe, index) => {
+      fetchNutrients(
+        itemRecipe,
+        setLoading,
+        index,
+        ingredients,
+        setIngredients
+      );
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <div className="bg-white shadow-sm drop-shadow-sm rounded-md">
       <div className="flex justify-between p-3 px-4 flex-wrap gap-4">
@@ -23,78 +43,32 @@ const DetailRecipe = () => {
         <div className="divide-x-2 divide-gray-400">
           <div></div>
           <div className="flex flex-col gap-4">
-            <div className="flex gap-2">
-              <span className="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
-                check
-              </span>
-              <div className="flex gap-2">
-                <img
-                  src="https://www.edamam.com/food-img/933/933eb3791b3a2175e007f1607d56b7e2.jpg"
-                  className="w-20 h-20 rounded object-cover"
-                  alt="recipe"
-                />
-                <div className="flex flex-col gap-1 justify-between">
-                  <h3 className="uppercase font-medium">Fresh Salmon</h3>
-                  <p className="text-gray-400 text-xs">
-                    250 grams of fresh salmon
-                  </p>
-                  <div className="text-orange-600 border-orange-600 border w-fit text-xs font-semibold py-1 px-2 rounded-full">
-                    <span className="px-2 py-badge relative right-1 rounded-full bg-orange-600 text-white">
-                      350
-                    </span>{" "}
-                    kcal
+            {ingredients?.map((item, index) => (
+              <div className="flex gap-2" key={index}>
+                <span className="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
+                  check
+                </span>
+                <div className="flex gap-2">
+                  <img
+                    src={item?.image}
+                    className="w-20 h-20 rounded object-cover"
+                    alt="recipe"
+                  />
+                  <div className="flex flex-col gap-1 justify-between">
+                    <h3 className="uppercase font-medium">{item?.food}</h3>
+                    <p className="text-gray-400 text-xs">
+                      {item?.quantity} {item?.measure} of {item?.food}
+                    </p>
+                    <div className="text-orange-600 border-orange-600 border w-fit text-xs font-semibold py-1 px-2 rounded-full">
+                      <span className="px-2 py-badge relative right-1 rounded-full bg-orange-600 text-white">
+                        {item?.calories}
+                      </span>{" "}
+                      kcal
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="flex gap-2">
-              <span className="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
-                check
-              </span>
-              <div className="flex gap-2">
-                <img
-                  src="https://www.edamam.com/food-img/933/933eb3791b3a2175e007f1607d56b7e2.jpg"
-                  className="w-20 h-20 rounded object-cover"
-                  alt="recipe"
-                />
-                <div className="flex flex-col gap-1 justify-between">
-                  <h3 className="uppercase font-medium">Fresh Salmon</h3>
-                  <p className="text-gray-400 text-xs">
-                    250 grams of fresh salmon
-                  </p>
-                  <div className="text-orange-600 border-orange-600 border w-fit text-xs font-semibold py-1 px-2 rounded-full">
-                    <span className="px-2 py-badge relative right-1 rounded-full bg-orange-600 text-white">
-                      350
-                    </span>{" "}
-                    kcal
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <span className="material-symbols-outlined relative font-bold right-2 rounded-full h-4 w-4 text-xs flex justify-center items-center text-white bg-orange-600">
-                check
-              </span>
-              <div className="flex gap-2">
-                <img
-                  src="https://www.edamam.com/food-img/933/933eb3791b3a2175e007f1607d56b7e2.jpg"
-                  className="w-20 h-20 rounded object-cover"
-                  alt="recipe"
-                />
-                <div className="flex flex-col gap-1 justify-between">
-                  <h3 className="uppercase font-medium">Fresh Salmon</h3>
-                  <p className="text-gray-400 text-xs">
-                    250 grams of fresh salmon
-                  </p>
-                  <div className="text-orange-600 border-orange-600 border w-fit text-xs font-semibold py-1 px-2 rounded-full">
-                    <span className="px-2 py-badge relative right-1 rounded-full bg-orange-600 text-white">
-                      350
-                    </span>{" "}
-                    kcal
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
