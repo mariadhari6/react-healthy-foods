@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import HomeContext from "../contexts/HomeContext";
 import { fetchFood } from "../controllers/HomeController";
@@ -8,6 +8,7 @@ const AppBar = ({ setNextFoods }) => {
   const { setFoods, addFood } = useContext(FoodsContext);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const location = useLocation();
   const handleSubmit = (e) => {
     e.preventDefault();
     setFoods([]);
@@ -41,24 +42,26 @@ const AppBar = ({ setNextFoods }) => {
               About
             </Link>
           </nav>
-          <div className="relative shadow-sm">
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Search foods recipe ..."
-                className="outline-none block w-full sm:text-sm"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                autoFocus
-              />
-            </form>
-            <button
-              className="absolute inset-y-0 right-0 flex items-center"
-              onClick={handleSubmit}
-            >
-              <span className="material-symbols-outlined">search</span>
-            </button>
-          </div>
+          {location.pathname === "/" && (
+            <div className="relative shadow-sm">
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  placeholder="Search foods recipe ..."
+                  className="outline-none block w-full sm:text-sm"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  autoFocus
+                />
+              </form>
+              <button
+                className="absolute inset-y-0 right-0 flex items-center"
+                onClick={handleSubmit}
+              >
+                <span className="material-symbols-outlined">search</span>
+              </button>
+            </div>
+          )}
           <div className="-mr-2 -my-2 md:hidden">
             <button
               type="button"
