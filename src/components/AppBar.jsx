@@ -16,7 +16,7 @@ const AppBar = ({ setNextFoods }) => {
     setQuery("");
   };
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-white z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center border-b-2 py-4 border-gray-100">
           <div className="flex justify-start">
