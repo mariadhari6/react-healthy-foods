@@ -1,13 +1,14 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import HomeContext from "../contexts/HomeContext";
-import { fetchFood } from "../controllers/HomeController";
+import { fetchFood, fetchQueries } from "../controllers/HomeController";
 const { FoodsContext } = HomeContext;
 const AppBar = ({ setNextFoods }) => {
   const { setFoods, addFood } = useContext(FoodsContext);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [autcompletes, setAutoCompletes] = useState([]);
   const location = useLocation();
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +16,12 @@ const AppBar = ({ setNextFoods }) => {
     fetchFood(query, addFood, null, setNextFoods);
     setQuery("");
   };
+  useEffect(() => {
+    fetchQueries(setAutoCompletes, query);
+  }, [query]);
+  useEffect(() => {
+    console.log(autcompletes);
+  }, [autcompletes]);
   return (
     <div className="relative bg-white z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -52,7 +59,16 @@ const AppBar = ({ setNextFoods }) => {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   autoFocus
+                  list="list"
                 />
+                <datalist
+                  id="list"
+                  className="outline-none w-full sm:text-sm"
+                >
+                  {autcompletes?.map((item) => (
+                    <option key={item} value={item} />
+                  ))}
+                </datalist>
               </form>
               <button
                 className="absolute inset-y-0 right-0 flex items-center"
