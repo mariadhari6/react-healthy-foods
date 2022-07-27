@@ -64,4 +64,17 @@ const fetchNextFood = (url, addFood, setLoading, setNextFoods) => {
       console.log(error);
     });
 };
-export { getRandomIngredient, fetchFood, fetchNextFood };
+const fetchQueries = (setAutoCompletes, keyword) => {
+  const app_id = process.env.REACT_APP_ID_FOOD
+  const app_key = process.env.REACT_APP_KEY_FOOD
+  const url = `${baseUrl.auto_complete}?app_id=${app_id}&app_key=${app_key}&q=${keyword}&limit=5`
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      setAutoCompletes(data)
+    })
+    .catch(error => {
+      setAutoCompletes([])
+    })
+}
+export { getRandomIngredient, fetchFood, fetchNextFood, fetchQueries };
