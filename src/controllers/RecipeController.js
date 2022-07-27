@@ -19,7 +19,7 @@ const fetchRecipe = (foodId, setLoading, setRecipe) => {
           calories,
           totalTime,
           mealType,
-          totalNutriens,
+          totalNutrients,
           totalDaily,
         } = data?.recipe;
         const recipe = {
@@ -32,7 +32,7 @@ const fetchRecipe = (foodId, setLoading, setRecipe) => {
           calories,
           totalTime,
           mealType,
-          totalNutriens,
+          totalNutrients,
           totalDaily,
         };
         setRecipe(recipe);
