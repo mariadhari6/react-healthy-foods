@@ -1,6 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import FoodContext from "../../contexts/FoodContext";
-import { fetchNutrients } from "../../controllers/RecipeController";
+import {
+  exportRecipe,
+  fetchNutrients,
+} from "../../controllers/RecipeController";
 const { RecipeContext } = FoodContext;
 const DetailRecipe = () => {
   const { recipe } = useContext(RecipeContext);
@@ -33,13 +36,16 @@ const DetailRecipe = () => {
             </p>
           </div>
         </div>
-        <button className="hover:shadow-lg hover:shadow-orange-600/50 outline-none uppercase text-xs flex items-center gap-2 py-1 px-2 hover:text-white hover:bg-orange-600  rounded-md border-2 border-orange-600 text-orange-600 font-medium">
+        <button
+          className="hover:shadow-lg hover:shadow-orange-600/50 outline-none uppercase text-xs flex items-center gap-2 py-1 px-2 hover:text-white hover:bg-orange-600  rounded-md border-2 border-orange-600 text-orange-600 font-medium"
+          onClick={() => exportRecipe(recipe.label)}
+        >
           <span className="material-symbols-outlined">cloud_download</span>
           Download recipe pdf
         </button>
       </div>
       <hr />
-      <div className="px-4 py-6">
+      <div className="px-4 py-6" id="recipes">
         <div className="divide-x-2 divide-gray-400">
           <div></div>
           <div className="flex flex-col gap-4">
