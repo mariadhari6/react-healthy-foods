@@ -11,15 +11,10 @@ const useNutrients = () => {
         setLabels(labels => [...labels, label])
         setNutients(nutrients => [...nutrients, value])
     }
-    const remove = (index) => {
-        setLabels((labels) => labels.filter((_, i) => i !== index))
-        setNutients((nutrients) => nutrients.filter((_, i) => i !== index))
-    }
     return [
         labels,
         nutrients,
         push,
-        remove,
         reset
     ]
 }
