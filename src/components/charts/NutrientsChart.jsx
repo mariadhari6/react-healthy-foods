@@ -1,4 +1,7 @@
+import { useContext, useEffect } from "react";
 import Chart from "react-apexcharts";
+import FoodContext from "../../contexts/FoodContext";
+import useNutrients from "../../hooks/useNutrients";
 const labels = [
   "Carbohydrate",
   "Sodium",
@@ -60,7 +63,33 @@ const options = {
   legend,
 };
 const series = [100, 200, 201, 50, 70, 45, 10, 20, 30, 40, 50];
+const { RecipeContext } = FoodContext;
+const acceptedUnits = ["mg", "µg", "g"];
 const NutrientsChart = () => {
-  return <Chart options={options} series={series} type="donut" width="100%" />;
+  const { recipe } = useContext(RecipeContext);
+  const [labels, nutrients, push, remove, reset] = useNutrients();
+  useEffect(() => {
+    reset()
+    const totalNutrients = Object.values(recipe?.totalNutrients);
+    totalNutrients.forEach((nutrient) => {
+      if (acceptedUnits.includes(nutrient.unit)) {
+        if (nutrient.unit === "µg") {
+          nutrient.unit = "g";
+          nutrient.quantity /= 1000000;
+        } else if (nutrient.unit === "mg") {
+          nutrient.unit = "g";
+          nutrient.quantity /= 1000;
+        }
+        if (nutrient.quantity > 0) {
+          push(nutrient.label, nutrient.quantity)
+        }
+      }
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recipe?.totalNutrients]);
+  useEffect(() => {
+    options.labels = labels
+  }, [nutrients, labels])
+  return <Chart options={options} series={nutrients} type="donut" width="100%" />;
 };
 export default NutrientsChart;
