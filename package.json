@@ -7,6 +7,8 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "apexcharts": "^3.35.3",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "onchange": "^7.1.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",

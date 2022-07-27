@@ -1,3 +1,5 @@
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import { baseUrl } from "../configs/api";
 
 const fetchRecipe = (foodId, setLoading, setRecipe) => {
@@ -88,4 +90,16 @@ const fetchNutrients = (
       setLoading(false);
     });
 };
-export { fetchRecipe, fetchNutrients };
+const exportRecipe = async (nameFood) => {
+  const pdf = new jsPDF("portrait", "pt", "a4");
+  const data = await html2canvas(document.querySelector('#recipes'))
+  const img = data.toDataURL("image/png")
+  const imgProperties = pdf.getImageProperties(img)
+  const pdfWidth = pdf.internal.pageSize.getWidth()
+  const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width
+  pdf.addImage(img, "PNG", 0, 0, pdfWidth, pdfHeight)
+  pdf.save(`${nameFood}.pdf`)
+  // pdf.html(data).then(() => {
+  // })
+}
+export { fetchRecipe, fetchNutrients, exportRecipe };
