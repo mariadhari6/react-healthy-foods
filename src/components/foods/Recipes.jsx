@@ -9,7 +9,7 @@ const Recipes = () => {
     <div className="max-w-7xl mx-auto px-4 gap-7 sm:px-6 my-7 grid grid-cols-1 md:grid-cols-11">
       <div className="md:col-span-6 col-span-1 rounded-md">
         <div className="relative">
-        <FoodImage />
+          <FoodImage />
         </div>
       </div>
       <div className="md:col-span-5 col-span-1">
